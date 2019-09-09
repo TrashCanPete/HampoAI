@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/AIWithHampo.unity
+    guid: 82728d17df3b728459bc908e1eeacbdd
   m_configObjects: {}

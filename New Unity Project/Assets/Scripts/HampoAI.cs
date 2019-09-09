@@ -31,8 +31,10 @@ public class HampoAI : MonoBehaviour
 
         if (currentDestination > target.Count - 1)
         {
-            currentDestination = Mathf.RoundToInt(Random.Range(0f, 3f));
+            currentDestination = 0;
         }
             agent.SetDestination(target[currentDestination].position);
         }
+
+    
 }

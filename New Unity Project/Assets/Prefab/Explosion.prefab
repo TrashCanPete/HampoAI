@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2420011417049730543}
   - component: {fileID: -1212195215896495839}
   m_Layer: 0
-  m_Name: Explosion
+  m_Name: explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2420011417049730540}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -27.373396, y: 1.533034, z: -3.1643639}
+  m_LocalPosition: {x: 25.098585, y: 0.6494493, z: 14.036083}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

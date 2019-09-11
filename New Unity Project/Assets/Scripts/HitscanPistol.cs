@@ -5,43 +5,52 @@ using UnityEngine;
 public class HitscanPistol : MonoBehaviour
 {
     public Transform gunBarrel;
-    public GameObject explosion;
+
     public GameObject blood;
-    
-    
+
+    public float damage = 10f;
+    public float range = 100f;
+    public float impactForce = 30f;
+
+    public ParticleSystem muzzleFlash;
 
     void Update()
     {
         int layerMask = 1 << 8;
         layerMask = ~layerMask;
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetButtonDown("Fire1"))
         {
+            Shoot();
+        }
+
+        void Shoot()
+        {
+            muzzleFlash.Play();
             RaycastHit hit;
-
-
             if (Physics.Raycast(gunBarrel.position, gunBarrel.forward, out hit, Mathf.Infinity, layerMask))
             {
                 Debug.DrawRay(gunBarrel.position, gunBarrel.forward * hit.distance, Color.yellow);
-                GameObject explosionClone = Instantiate(explosion);
-                explosion.transform.position = hit.point;
-                GameObject bloodClone = Instantiate(blood);
-                blood.transform.position = hit.point;
-                if (hit.collider.transform.tag == "enemy")
+
+                Target target = hit.transform.GetComponent<Target>();
+                if (target!= null)
                 {
-                    Destroy(hit.collider.gameObject);
+                    target.TakeDamage(damage);
                 }
+
+                if (hit.rigidbody != null)
+                {
+                    hit.rigidbody.AddForce(-hit.normal * (impactForce));
+                }
+
+                GameObject bloodGO = Instantiate(blood, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(bloodGO, 2f);
+
             }
             else
             {
                 Debug.DrawRay(gunBarrel.position, gunBarrel.forward * 9000, Color.grey);
             }
-
-            
         }
-
-        
-       
-
     }
 }
